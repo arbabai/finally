@@ -108,22 +108,24 @@ class MarketSimulator(MarketDataSource):
         print(f"[Simulator] Starting — {len(self._states)} tickers")
         while self._running:
             tick_start = time.monotonic()
+            try:
+                # Snapshot state dict to avoid mutation-during-iteration issues
+                states = dict(self._states)
+                self._tick(states)
 
-            # Snapshot state dict to avoid mutation-during-iteration issues
-            states = dict(self._states)
-            self._tick(states)
-
-            for state in states.values():
-                # Propagate updated prices back to the live dict
-                if state.ticker in self._states:
-                    self._states[state.ticker].price = state.price
-                    self._states[state.ticker].prev_price = state.prev_price
-                point = PricePoint.from_prices(
-                    ticker=state.ticker,
-                    price=state.price,
-                    prev_price=state.prev_price,
-                )
-                await cache.update(point)
+                for state in states.values():
+                    # Propagate updated prices back to the live dict
+                    if state.ticker in self._states:
+                        self._states[state.ticker].price = state.price
+                        self._states[state.ticker].prev_price = state.prev_price
+                    point = PricePoint.from_prices(
+                        ticker=state.ticker,
+                        price=state.price,
+                        prev_price=state.prev_price,
+                    )
+                    await cache.update(point)
+            except Exception as e:
+                print(f"[Simulator] Error during tick: {e}")
 
             elapsed = time.monotonic() - tick_start
             await asyncio.sleep(max(0.0, TICK_INTERVAL - elapsed))

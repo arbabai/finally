@@ -208,12 +208,17 @@ async def test_start_writes_to_cache():
 @respx.mock
 async def test_start_tracks_prev_price():
     """Second poll should use the first poll's price as prev_price."""
+    # Use an event to stop the client after exactly 2 polls, avoiding
+    # timing-dependent behaviour that caused flaky assertions.
     call_count = 0
+    two_polls_done = asyncio.Event()
 
     def response_factory(request):
         nonlocal call_count
         call_count += 1
         price = 189.70 if call_count == 1 else 191.00
+        if call_count >= 2:
+            two_polls_done.set()
         return httpx.Response(200, json={
             "status": "OK",
             "tickers": [{"ticker": "AAPL", "lastTrade": {"p": price}, "day": {"c": price}}],
@@ -227,7 +232,8 @@ async def test_start_tracks_prev_price():
     cache = PriceCache()
 
     task = asyncio.create_task(client.start(cache))
-    await asyncio.sleep(0.35)
+    # Wait until exactly 2 polls have completed, then stop immediately.
+    await asyncio.wait_for(two_polls_done.wait(), timeout=2.0)
     await client.stop()
     try:
         await asyncio.wait_for(task, timeout=2.0)
@@ -236,7 +242,7 @@ async def test_start_tracks_prev_price():
 
     result = await cache.get("AAPL")
     assert result is not None
-    # After second poll, prev_price should be the first poll's price
+    # After the second poll, prev_price must be the first poll's price.
     assert result.prev_price == 189.70
     assert result.price == 191.00
 
