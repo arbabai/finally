@@ -6,7 +6,16 @@
       "WebFetch(domain:massive.com)",
       "WebFetch(domain:polygon.io)",
       "WebFetch(domain:polygon.readthedocs.io)",
-      "WebFetch(domain:ny5.polygon.io)"
+      "WebFetch(domain:ny5.polygon.io)",
+      "Bash(uv run:*)",
+      "Bash(uv sync:*)",
+      "Bash(gh pr create --title 'docs: Market Data backend code review' --body ':*)",
+      "Bash(gh pr create --title 'fix: address all Market Data backend review issues' --body ':*)",
+      "Bash(mv planning/MASSIVE_API.md planning/archive/)",
+      "Bash(mv planning/MARKET_INTERFACE.md planning/archive/)",
+      "Bash(mv planning/MARKET_SIMULATOR.md planning/archive/)",
+      "Bash(mv planning/MARKET_DATA_DESIGN.md planning/archive/)",
+      "Bash(mv planning/MARKET_DATA_REVIEW.md planning/archive/)"
     ]
   }
 }
