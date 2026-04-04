@@ -88,7 +88,7 @@ The user runs a single Docker command (or a provided start script). A browser op
 finally/
 ├── frontend/                 # Next.js TypeScript project (static export)
 ├── backend/                  # FastAPI uv project (Python)
-│   └── db/                   # Schema definitions, seed data, migration logic
+│   └── schema/               # DB init logic; DDL is embedded in Python, not SQL files
 ├── planning/                 # Project-wide documentation for agents
 │   ├── PLAN.md               # This document
 │   └── ...                   # Additional agent reference docs
@@ -110,8 +110,8 @@ finally/
 
 - **`frontend/`** is a self-contained Next.js project. It knows nothing about Python. It talks to the backend via `/api/*` endpoints and `/api/stream/*` SSE endpoints. Internal structure is up to the Frontend Engineer agent.
 - **`backend/`** is a self-contained uv project with its own `pyproject.toml`. It owns all server logic including database initialization, schema, seed data, API routes, SSE streaming, market data, and LLM integration. Internal structure is up to the Backend/Market Data agents.
-- **`backend/db/`** contains schema SQL definitions and seed logic. The backend lazily initializes the database on first request — creating tables and seeding default data if the SQLite file doesn't exist or is empty.
-- **`db/`** at the top level is the runtime volume mount point. The SQLite file (`db/finally.db`) is created here by the backend and persists across container restarts via Docker volume.
+- **`backend/schema/`** contains database initialization logic. All DDL (CREATE TABLE statements) is embedded directly in Python — no external SQL files are read at runtime. This keeps initialization self-contained and avoids filesystem path issues in Docker. The backend lazily initializes on startup: if the SQLite file doesn't exist or tables are missing, it creates the schema and seeds default data.
+- **`db/`** at the top level is the runtime volume mount point. Note: `backend/schema/` and `db/` serve completely different purposes — one is source code, the other is the runtime data directory. The SQLite file (`db/finally.db`) is created here by the backend and persists across container restarts via Docker volume.
 - **`planning/`** contains project-wide documentation, including this plan. All agents reference files here as the shared contract.
 - **`test/`** contains Playwright E2E tests and supporting infrastructure (e.g., `docker-compose.test.yml`). Unit tests live within `frontend/` and `backend/` respectively, following each framework's conventions.
 - **`scripts/`** contains start/stop scripts that wrap Docker commands.
@@ -175,7 +175,8 @@ Both the simulator and the Massive client implement the same abstract interface.
 
 - Endpoint: `GET /api/stream/prices`
 - Long-lived SSE connection; client uses native `EventSource` API
-- Server pushes price updates for all tickers known to the system at a regular cadence (~500ms) — in the single-user model this is equivalent to the user's watchlist
+- Server pushes price updates for all tickers currently in the user's watchlist at a regular cadence (~500ms)
+- When a ticker is removed from the watchlist, the price cache drops it within one update cycle and the SSE stream stops emitting events for it; the frontend should gracefully ignore SSE events for any ticker not in its local watchlist state
 - Each SSE event contains ticker, price, previous price, timestamp, and change direction
 - Client handles reconnection automatically (EventSource has built-in retry)
 
@@ -185,11 +186,18 @@ Both the simulator and the Massive client implement the same abstract interface.
 
 ### SQLite with Lazy Initialization
 
-The backend checks for the SQLite database on startup (or first request). If the file doesn't exist or tables are missing, it creates the schema and seeds default data. This means:
+The backend checks for the SQLite database on startup. If the file doesn't exist or tables are missing, it creates the schema (DDL embedded in Python, not read from SQL files) and seeds default data. This means:
 
 - No separate migration step
 - No manual database setup
 - Fresh Docker volumes start with a clean, seeded database automatically
+
+### Background Tasks
+
+The backend runs two persistent background tasks:
+
+1. **Market data task** — simulator or Massive API poller; writes to the in-memory price cache every ~500ms
+2. **Portfolio snapshot task** — records total portfolio value to `portfolio_snapshots` every 30 seconds, and immediately after each trade execution
 
 ### Schema
 
@@ -258,7 +266,8 @@ All tables include a `user_id` column defaulting to `"default"`. This is hardcod
 |--------|------|-------------|
 | GET | `/api/portfolio` | Current positions, cash balance, total value, unrealized P&L |
 | POST | `/api/portfolio/trade` | Execute a trade: `{ticker, quantity, side}` |
-| GET | `/api/portfolio/history` | Portfolio value snapshots over time (for P&L chart) |
+| GET | `/api/portfolio/history` | Portfolio value snapshots over time (for P&L chart) — returns all rows, no time-range filtering in MVP |
+| POST | `/api/portfolio/reset` | *(Stretch goal)* Reset portfolio to initial state: $10,000 cash, no positions, no trade history |
 
 ### Watchlist
 | Method | Path | Description |
@@ -277,6 +286,20 @@ All tables include a `user_id` column defaulting to `"default"`. This is hardcod
 |--------|------|-------------|
 | GET | `/api/health` | Health check (for Docker/deployment) |
 
+### Error Responses
+
+All endpoints use FastAPI's default error envelope:
+
+```json
+{"detail": "Human-readable error message"}
+```
+
+4xx errors (e.g., insufficient cash, ticker not found, invalid input) return the appropriate HTTP status code with this shape. Do not invent a custom error envelope.
+
+### Ticker Validation
+
+No strict pre-validation is applied when adding a ticker to the watchlist. Any non-empty uppercase string is accepted. In simulator mode, the ticker immediately starts receiving simulated prices. In Massive API mode, if price data never arrives for a ticker, the frontend displays it with no price — no server-side error is raised.
+
 ---
 
 ## 9. LLM Integration
@@ -290,7 +313,7 @@ There is an OPENROUTER_API_KEY in the .env file in the project root.
 When the user sends a chat message, the backend:
 
 1. Loads the user's current portfolio context (cash, positions with P&L, watchlist with live prices, total portfolio value)
-2. Loads recent conversation history from the `chat_messages` table
+2. Loads the last 20 messages from `chat_messages` (10 user/assistant turns) to keep the prompt within context limits
 3. Constructs a prompt with a system message, portfolio context, conversation history, and the user's new message
 4. Calls the LLM via LiteLLM → OpenRouter, requesting structured output, using the cerebras-inference skill
 5. Parses the complete structured JSON response
@@ -309,14 +332,15 @@ The LLM is instructed to respond with JSON matching this schema:
     {"ticker": "AAPL", "side": "buy", "quantity": 10}
   ],
   "watchlist_changes": [
-    {"ticker": "PYPL", "action": "add"}
+    {"ticker": "PYPL", "action": "add"},
+    {"ticker": "NFLX", "action": "remove"}
   ]
 }
 ```
 
 - `message` (required): The conversational text shown to the user
 - `trades` (optional): Array of trades to auto-execute. Each trade goes through the same validation as manual trades (sufficient cash for buys, sufficient shares for sells)
-- `watchlist_changes` (optional): Array of watchlist modifications
+- `watchlist_changes` (optional): Array of watchlist modifications. `action` must be `"add"` or `"remove"`
 
 ### Auto-Execution
 
@@ -352,8 +376,8 @@ When `LLM_MOCK=true`, the backend returns deterministic mock responses instead o
 
 The frontend is a single-page application with a dense, terminal-inspired layout. The specific component architecture and layout system is up to the Frontend Engineer, but the UI should include these elements:
 
-- **Watchlist panel** — grid/table of watched tickers with: ticker symbol, current price (flashing green/red on change), daily change %, and a sparkline mini-chart (accumulated from SSE since page load)
-- **Main chart area** — larger chart for the currently selected ticker, with at minimum price over time. Clicking a ticker in the watchlist selects it here.
+- **Watchlist panel** — grid/table of watched tickers with: ticker symbol, current price (flashing green/red on change), change % since first SSE price received (frontend-computed — the simulator has no concept of a daily open, so this is a session-relative change), and a sparkline mini-chart (accumulated from SSE since page load)
+- **Main chart area** — larger chart for the currently selected ticker showing price over time, accumulated from the SSE stream on the frontend (same source as sparklines). The chart starts empty on load and fills in as prices stream in. Clicking a ticker in the watchlist selects it here.
 - **Portfolio heatmap** — treemap visualization where each rectangle is a position, sized by portfolio weight, colored by P&L (green = profit, red = loss)
 - **P&L chart** — line chart showing total portfolio value over time, using data from `portfolio_snapshots`
 - **Positions table** — tabular view of all positions: ticker, quantity, avg cost, current price, unrealized P&L, % change

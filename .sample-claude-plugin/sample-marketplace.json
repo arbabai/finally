@@ -1,0 +1,19 @@
+{
+  "name": "arbab-tools",
+  "owner": {
+    "name": "Arbab",
+    "email": "abc@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "indepedent-reviewer",
+      "source": "./indepedent-reviewer",
+      "description": "Carry out an indepdent reivew of all changes since last commit",
+      "version": "1.0.0",
+      "author": {
+        "name":"Arbab"
+      }
+
+    }
+  ]
+}

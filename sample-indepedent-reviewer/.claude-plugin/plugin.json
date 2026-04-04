@@ -1,0 +1,5 @@
+{
+    "name": "sample-indepdent-reviewer",
+    "description": "Carry out an indepdent review of all changes since last commit",
+    "version": "1.0.0"
+}

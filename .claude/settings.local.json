@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(codex exec:*)",
+      "WebSearch",
+      "WebFetch(domain:massive.com)",
+      "WebFetch(domain:polygon.io)",
+      "WebFetch(domain:polygon.readthedocs.io)",
+      "WebFetch(domain:ny5.polygon.io)"
+    ]
+  }
+}
