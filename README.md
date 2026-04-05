@@ -2,7 +2,7 @@
 
 A Bloomberg-inspired, AI-powered trading workstation with live-streaming market data, a simulated $10,000 portfolio, and an LLM assistant that can analyze your positions and execute trades via natural language.
 
-Built entirely by orchestrated AI coding agents as a capstone for an agentic AI development course.
+Built entirely by orchestrated AI coding agents as a capstone for an agentic AI development.
 
 ---
 
