@@ -127,7 +127,7 @@ export default function Watchlist({
             <div
               key={ticker}
               onClick={() => onSelectTicker(ticker)}
-              className={`flex items-center justify-between px-3 py-1.5 cursor-pointer border-b border-border/50 hover:bg-bg-primary/50 transition-colors ${
+              className={`flex items-center justify-between px-3 py-2 sm:py-1.5 cursor-pointer border-b border-border/50 hover:bg-bg-primary/50 transition-colors ${
                 isSelected ? "bg-bg-primary" : ""
               } ${flash === "up" ? "price-flash-up" : flash === "down" ? "price-flash-down" : ""}`}
             >

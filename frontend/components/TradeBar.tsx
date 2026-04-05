@@ -55,13 +55,13 @@ export default function TradeBar({
   );
 
   return (
-    <div className="flex items-center gap-2 px-3 py-2 border-t border-border bg-bg-panel">
+    <div className="flex flex-wrap items-center gap-2 px-3 py-2 border-t border-border bg-bg-panel">
       <input
         type="text"
         value={ticker}
         onChange={(e) => setTicker(e.target.value.toUpperCase())}
         placeholder={selectedTicker || "TICKER"}
-        className="w-20 bg-bg-primary border border-border rounded px-2 py-1 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-blue-primary"
+        className="w-20 bg-bg-primary border border-border rounded px-2 py-1.5 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-blue-primary"
       />
       <input
         type="number"
@@ -70,24 +70,24 @@ export default function TradeBar({
         placeholder="Qty"
         min="0"
         step="any"
-        className="w-20 bg-bg-primary border border-border rounded px-2 py-1 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-blue-primary"
+        className="w-20 bg-bg-primary border border-border rounded px-2 py-1.5 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-blue-primary"
       />
       <button
         onClick={() => executeTrade("buy")}
         disabled={submitting}
-        className="bg-green text-bg-primary text-xs font-bold px-3 py-1 rounded hover:opacity-80 disabled:opacity-50"
+        className="bg-green text-bg-primary text-xs font-bold px-4 py-1.5 rounded hover:opacity-80 disabled:opacity-50"
       >
         BUY
       </button>
       <button
         onClick={() => executeTrade("sell")}
         disabled={submitting}
-        className="bg-red text-white text-xs font-bold px-3 py-1 rounded hover:opacity-80 disabled:opacity-50"
+        className="bg-red text-white text-xs font-bold px-4 py-1.5 rounded hover:opacity-80 disabled:opacity-50"
       >
         SELL
       </button>
       {status && (
-        <span className="text-xs text-text-secondary ml-2">{status}</span>
+        <span className="text-xs text-text-secondary w-full sm:w-auto">{status}</span>
       )}
     </div>
   );

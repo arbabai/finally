@@ -24,7 +24,7 @@ export default function PositionsTable({ positions }: PositionsTableProps) {
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto w-full">
       <table className="w-full text-xs">
         <thead>
           <tr className="text-text-secondary border-b border-border">

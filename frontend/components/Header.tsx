@@ -23,21 +23,26 @@ export default function Header({
   connectionStatus,
 }: HeaderProps) {
   return (
-    <header className="flex items-center justify-between px-4 py-2 border-b border-border bg-bg-panel">
-      <div className="flex items-center gap-3">
-        <h1 className="text-lg font-bold text-accent-yellow tracking-wide">
+    <header className="flex items-center justify-between px-3 py-2 border-b border-border bg-bg-panel flex-shrink-0">
+      {/* Brand */}
+      <div className="flex items-center gap-2">
+        <h1 className="text-base font-bold text-accent-yellow tracking-wide">
           FinAlly
         </h1>
-        <span className="text-xs text-text-secondary">AI Trading Workstation</span>
+        <span className="hidden sm:inline text-xs text-text-secondary">
+          AI Trading Workstation
+        </span>
       </div>
-      <div className="flex items-center gap-6">
+
+      {/* Stats */}
+      <div className="flex items-center gap-3 sm:gap-6">
         <div className="text-right">
-          <div className="text-xs text-text-secondary">Portfolio Value</div>
-          <div className="text-sm font-semibold text-blue-primary">
+          <div className="text-[10px] sm:text-xs text-text-secondary">Portfolio</div>
+          <div className="text-xs sm:text-sm font-semibold text-blue-primary">
             {totalValue !== null ? formatCurrency(totalValue) : "---"}
           </div>
         </div>
-        <div className="text-right">
+        <div className="text-right hidden sm:block">
           <div className="text-xs text-text-secondary">Cash</div>
           <div className="text-sm font-semibold text-green">
             {cashBalance !== null ? formatCurrency(cashBalance) : "---"}

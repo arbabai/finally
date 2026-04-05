@@ -1,0 +1,151 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "FinAlly" [level=1] [ref=e5]
+        - generic [ref=e6]: AI Trading Workstation
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: Portfolio
+          - generic [ref=e10]: $10,030.70
+        - generic [ref=e11]:
+          - generic [ref=e12]: Cash
+          - generic [ref=e13]: $1,162.68
+        - generic "Connected" [ref=e14]:
+          - generic [ref=e16]: Connected
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - heading "Watchlist" [level=2] [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23] [cursor=pointer]:
+            - generic [ref=e25]: AAPL
+            - generic [ref=e26]:
+              - generic [ref=e28]: "---"
+              - button "x" [ref=e29]
+          - generic [ref=e30] [cursor=pointer]:
+            - generic [ref=e32]: AMZN
+            - generic [ref=e33]:
+              - generic [ref=e35]: "---"
+              - button "x" [ref=e36]
+          - generic [ref=e37] [cursor=pointer]:
+            - generic [ref=e39]: GOOGL
+            - generic [ref=e40]:
+              - generic [ref=e42]: "---"
+              - button "x" [ref=e43]
+          - generic [ref=e44] [cursor=pointer]:
+            - generic [ref=e46]: JPM
+            - generic [ref=e47]:
+              - generic [ref=e49]: "---"
+              - button "x" [ref=e50]
+          - generic [ref=e51] [cursor=pointer]:
+            - generic [ref=e53]: META
+            - generic [ref=e54]:
+              - generic [ref=e56]: "---"
+              - button "x" [ref=e57]
+          - generic [ref=e58] [cursor=pointer]:
+            - generic [ref=e60]: MSFT
+            - generic [ref=e61]:
+              - generic [ref=e63]: "---"
+              - button "x" [ref=e64]
+          - generic [ref=e65] [cursor=pointer]:
+            - generic [ref=e67]: NFLX
+            - generic [ref=e68]:
+              - generic [ref=e70]: "---"
+              - button "x" [ref=e71]
+          - generic [ref=e72] [cursor=pointer]:
+            - generic [ref=e74]: NVDA
+            - generic [ref=e75]:
+              - generic [ref=e77]: "---"
+              - button "x" [ref=e78]
+          - generic [ref=e79] [cursor=pointer]:
+            - generic [ref=e81]: PYPL
+            - generic [ref=e82]:
+              - generic [ref=e84]: "---"
+              - button "x" [ref=e85]
+          - generic [ref=e86] [cursor=pointer]:
+            - generic [ref=e88]: TSLA
+            - generic [ref=e89]:
+              - generic [ref=e91]: "---"
+              - button "x" [ref=e92]
+          - generic [ref=e93] [cursor=pointer]:
+            - generic [ref=e95]: V
+            - generic [ref=e96]:
+              - generic [ref=e98]: "---"
+              - button "x" [ref=e99]
+        - generic [ref=e100]:
+          - textbox "Add ticker..." [ref=e101]
+          - button "Add" [ref=e102]
+      - generic [ref=e103]:
+        - generic [ref=e105]:
+          - generic [ref=e107]: AAPL
+          - generic [ref=e110]: Waiting for price data...
+        - generic [ref=e111]:
+          - textbox "AAPL" [ref=e112]
+          - spinbutton [ref=e113]
+          - button "BUY" [ref=e114]
+          - button "SELL" [ref=e115]
+        - generic [ref=e116]:
+          - heading "Positions" [level=2] [ref=e118]
+          - table [ref=e121]:
+            - rowgroup [ref=e122]:
+              - row "Ticker Qty Avg Cost Price P&L %" [ref=e123]:
+                - columnheader "Ticker" [ref=e124]
+                - columnheader "Qty" [ref=e125]
+                - columnheader "Avg Cost" [ref=e126]
+                - columnheader "Price" [ref=e127]
+                - columnheader "P&L" [ref=e128]
+                - columnheader "%" [ref=e129]
+            - rowgroup [ref=e130]:
+              - row "AAPL 6 $187.80 $190.03 +$13.36 +1.19%" [ref=e131]:
+                - cell "AAPL" [ref=e132]
+                - cell "6" [ref=e133]
+                - cell "$187.80" [ref=e134]
+                - cell "$190.03" [ref=e135]
+                - cell "+$13.36" [ref=e136]
+                - cell "+1.19%" [ref=e137]
+              - row "AMZN 20 $188.53 $185.07 -$69.23 -1.84%" [ref=e138]:
+                - cell "AMZN" [ref=e139]
+                - cell "20" [ref=e140]
+                - cell "$188.53" [ref=e141]
+                - cell "$185.07" [ref=e142]
+                - cell "-$69.23" [ref=e143]
+                - cell "-1.84%" [ref=e144]
+              - row "GOOGL 5 $174.97 $175.03 +$0.32 +0.04%" [ref=e145]:
+                - cell "GOOGL" [ref=e146]
+                - cell "5" [ref=e147]
+                - cell "$174.97" [ref=e148]
+                - cell "$175.03" [ref=e149]
+                - cell "+$0.32" [ref=e150]
+                - cell "+0.04%" [ref=e151]
+              - row "NFLX 5 $618.55 $630.25 +$58.50 +1.89%" [ref=e152]:
+                - cell "NFLX" [ref=e153]
+                - cell "5" [ref=e154]
+                - cell "$618.55" [ref=e155]
+                - cell "$630.25" [ref=e156]
+                - cell "+$58.50" [ref=e157]
+                - cell "+1.89%" [ref=e158]
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - heading "Portfolio" [level=2] [ref=e162]
+          - img [ref=e165]:
+            - generic [ref=e166]:
+              - generic [ref=e168]: AMZN
+              - generic [ref=e169]: "-1.8%"
+            - generic [ref=e170]:
+              - generic [ref=e172]: NFLX
+              - generic [ref=e173]: +1.9%
+            - generic [ref=e174]:
+              - generic [ref=e176]: AAPL
+              - generic [ref=e177]: +1.2%
+        - generic [ref=e180]:
+          - heading "P&L" [level=2] [ref=e182]
+          - generic [ref=e186]: Collecting portfolio data...
+        - generic [ref=e188]:
+          - generic [ref=e189]:
+            - heading "AI Assistant" [level=2] [ref=e190]
+            - button "»" [ref=e191]
+          - generic [ref=e193]: Ask me about your portfolio, request trades, or get market analysis.
+          - generic [ref=e194]:
+            - textbox "Ask FinAlly..." [ref=e195]
+            - button "Send" [disabled] [ref=e196]
+  - alert [ref=e197]
