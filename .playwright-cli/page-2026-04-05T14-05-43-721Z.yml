@@ -1,0 +1,149 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "FinAlly" [level=1] [ref=e5]
+        - generic [ref=e6]: AI Trading Workstation
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: Portfolio Value
+          - generic [ref=e10]: $9,774.76
+        - generic [ref=e11]:
+          - generic [ref=e12]: Cash
+          - generic [ref=e13]: $4,338.93
+        - generic "Connected" [ref=e14]:
+          - generic [ref=e16]: Connected
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - heading "Watchlist" [level=2] [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - generic [ref=e25]: AAPL
+              - generic [ref=e170]: "-3.14%"
+            - generic [ref=e26]:
+              - generic [ref=e28]: "184.03"
+              - button "x" [ref=e29]
+          - generic [ref=e30] [cursor=pointer]:
+            - generic [ref=e31]:
+              - generic [ref=e32]: AMZN
+              - generic [ref=e172]: "-5.12%"
+            - generic [ref=e33]:
+              - generic [ref=e35]: "175.54"
+              - button "x" [ref=e36]
+          - generic [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]:
+              - generic [ref=e39]: GOOGL
+              - generic [ref=e174]: +0.07%
+            - generic [ref=e40]:
+              - generic [ref=e42]: "175.09"
+              - button "x" [ref=e43]
+          - generic [ref=e44] [cursor=pointer]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: JPM
+              - generic [ref=e176]: "-2.72%"
+            - generic [ref=e47]:
+              - generic [ref=e49]: "194.56"
+              - button "x" [ref=e50]
+          - generic [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: META
+              - generic [ref=e178]: "-0.07%"
+            - generic [ref=e54]:
+              - generic [ref=e56]: "499.87"
+              - button "x" [ref=e57]
+          - generic [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: MSFT
+              - generic [ref=e180]: +2.14%
+            - generic [ref=e61]:
+              - generic [ref=e63]: "428.91"
+              - button "x" [ref=e64]
+          - generic [ref=e65] [cursor=pointer]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: NFLX
+              - generic [ref=e182]: "-0.15%"
+            - generic [ref=e68]:
+              - generic [ref=e70]: "629.06"
+              - button "x" [ref=e71]
+          - generic [ref=e72] [cursor=pointer]:
+            - generic [ref=e73]:
+              - generic [ref=e74]: NVDA
+              - generic [ref=e184]: "-4.62%"
+            - generic [ref=e75]:
+              - generic [ref=e77]: "839.27"
+              - button "x" [ref=e78]
+          - generic [ref=e79] [cursor=pointer]:
+            - generic [ref=e80]:
+              - generic [ref=e81]: TSLA
+              - generic [ref=e186]: "-2.63%"
+            - generic [ref=e82]:
+              - generic [ref=e84]: "170.49"
+              - button "x" [ref=e85]
+          - generic [ref=e86] [cursor=pointer]:
+            - generic [ref=e87]:
+              - generic [ref=e88]: V
+              - generic [ref=e188]: +4.08%
+            - generic [ref=e89]:
+              - generic [ref=e91]: "286.24"
+              - button "x" [ref=e92]
+        - generic [ref=e93]:
+          - textbox "Add ticker..." [ref=e94]
+          - button "Add" [ref=e95]
+      - generic [ref=e96]:
+        - generic [ref=e99]:
+          - generic [ref=e100]: AAPL
+          - generic [ref=e190]: "184.03"
+          - generic [ref=e191]: "-3.14%"
+        - generic [ref=e104]:
+          - textbox "AAPL" [ref=e105]
+          - spinbutton [ref=e106]
+          - button "BUY" [ref=e107]
+          - button "SELL" [ref=e108]
+          - generic [ref=e229]: BUY 10 AAPL executed
+        - generic [ref=e109]:
+          - heading "Positions" [level=2] [ref=e111]
+          - table [ref=e114]:
+            - rowgroup [ref=e115]:
+              - row "Ticker Qty Avg Cost Price P&L %" [ref=e116]:
+                - columnheader "Ticker" [ref=e117]
+                - columnheader "Qty" [ref=e118]
+                - columnheader "Avg Cost" [ref=e119]
+                - columnheader "Price" [ref=e120]
+                - columnheader "P&L" [ref=e121]
+                - columnheader "%" [ref=e122]
+            - rowgroup [ref=e123]:
+              - row "AAPL 20 $187.02 $184.02 -$60.09 -1.61%" [ref=e230]:
+                - cell "AAPL" [ref=e125]
+                - cell "20" [ref=e231]
+                - cell "$187.02" [ref=e232]
+                - cell "$184.02" [ref=e233]
+                - cell "-$60.09" [ref=e234]
+                - cell "-1.61%" [ref=e235]
+              - row "AMZN 10 $192.06 $175.54 -$165.15 -8.60%" [ref=e236]:
+                - cell "AMZN" [ref=e132]
+                - cell "10" [ref=e133]
+                - cell "$192.06" [ref=e134]
+                - cell "$175.54" [ref=e237]
+                - cell "-$165.15" [ref=e238]
+                - cell "-8.60%" [ref=e239]
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - heading "Portfolio" [level=2] [ref=e141]
+          - img [ref=e144]:
+            - generic [ref=e145]:
+              - generic [ref=e147]: AAPL
+              - generic [ref=e148]: "-1.6%"
+            - generic [ref=e149]:
+              - generic [ref=e151]: AMZN
+              - generic [ref=e152]: "-8.6%"
+        - heading "P&L" [level=2] [ref=e155]
+        - generic [ref=e160]:
+          - generic [ref=e161]:
+            - heading "AI Assistant" [level=2] [ref=e162]
+            - button "»" [ref=e163]
+          - generic [ref=e165]: Ask me about your portfolio, request trades, or get market analysis.
+          - generic [ref=e166]:
+            - textbox "Ask FinAlly..." [ref=e167]
+            - button "Send" [disabled] [ref=e168]
+  - alert [ref=e169]

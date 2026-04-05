@@ -1,3 +1,15 @@
+# SQLite database (runtime data, volume-mounted)
+db/*.db
+db/*.db-journal
+db/*.db-wal
+
+# Node
+node_modules/
+
+# Next.js build output
+frontend/out/
+frontend/.next/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

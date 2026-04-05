@@ -1,0 +1,98 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "FinAlly" [level=1] [ref=e5]
+        - generic [ref=e6]: AI Trading Workstation
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: Portfolio Value
+          - generic [ref=e10]: $10,000.00
+        - generic [ref=e11]:
+          - generic [ref=e12]: Cash
+          - generic [ref=e13]: $10,000.00
+        - generic "Connected" [ref=e14]:
+          - generic [ref=e16]: Connected
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - heading "Watchlist" [level=2] [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23] [cursor=pointer]:
+            - generic [ref=e25]: AAPL
+            - generic [ref=e26]:
+              - generic [ref=e28]: "---"
+              - button "x" [ref=e29]
+          - generic [ref=e30] [cursor=pointer]:
+            - generic [ref=e32]: AMZN
+            - generic [ref=e33]:
+              - generic [ref=e35]: "---"
+              - button "x" [ref=e36]
+          - generic [ref=e37] [cursor=pointer]:
+            - generic [ref=e39]: GOOGL
+            - generic [ref=e40]:
+              - generic [ref=e42]: "---"
+              - button "x" [ref=e43]
+          - generic [ref=e44] [cursor=pointer]:
+            - generic [ref=e46]: JPM
+            - generic [ref=e47]:
+              - generic [ref=e49]: "---"
+              - button "x" [ref=e50]
+          - generic [ref=e51] [cursor=pointer]:
+            - generic [ref=e53]: META
+            - generic [ref=e54]:
+              - generic [ref=e56]: "---"
+              - button "x" [ref=e57]
+          - generic [ref=e58] [cursor=pointer]:
+            - generic [ref=e60]: MSFT
+            - generic [ref=e61]:
+              - generic [ref=e63]: "---"
+              - button "x" [ref=e64]
+          - generic [ref=e65] [cursor=pointer]:
+            - generic [ref=e67]: NFLX
+            - generic [ref=e68]:
+              - generic [ref=e70]: "---"
+              - button "x" [ref=e71]
+          - generic [ref=e72] [cursor=pointer]:
+            - generic [ref=e74]: NVDA
+            - generic [ref=e75]:
+              - generic [ref=e77]: "---"
+              - button "x" [ref=e78]
+          - generic [ref=e79] [cursor=pointer]:
+            - generic [ref=e81]: TSLA
+            - generic [ref=e82]:
+              - generic [ref=e84]: "---"
+              - button "x" [ref=e85]
+          - generic [ref=e86] [cursor=pointer]:
+            - generic [ref=e88]: V
+            - generic [ref=e89]:
+              - generic [ref=e91]: "---"
+              - button "x" [ref=e92]
+        - generic [ref=e93]:
+          - textbox "Add ticker..." [ref=e94]
+          - button "Add" [ref=e95]
+      - generic [ref=e96]:
+        - generic [ref=e98]:
+          - generic [ref=e100]: AAPL
+          - generic [ref=e103]: Waiting for price data...
+        - generic [ref=e104]:
+          - textbox "AAPL" [ref=e105]
+          - spinbutton [ref=e106]
+          - button "BUY" [ref=e107]
+          - button "SELL" [ref=e108]
+        - generic [ref=e109]:
+          - heading "Positions" [level=2] [ref=e111]
+          - generic [ref=e113]: No positions yet. Execute a trade to get started.
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - heading "Portfolio" [level=2] [ref=e117]
+          - generic [ref=e119]: No positions to display
+        - heading "P&L" [level=2] [ref=e122]
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - heading "AI Assistant" [level=2] [ref=e129]
+            - button "»" [ref=e130]
+          - generic [ref=e132]: Ask me about your portfolio, request trades, or get market analysis.
+          - generic [ref=e133]:
+            - textbox "Ask FinAlly..." [ref=e134]
+            - button "Send" [disabled] [ref=e135]
+  - alert [ref=e136]

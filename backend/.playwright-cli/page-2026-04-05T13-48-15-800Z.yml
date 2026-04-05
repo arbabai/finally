@@ -1,0 +1,45 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "FinAlly" [level=1] [ref=e5]
+        - generic [ref=e6]: AI Trading Workstation
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: Portfolio Value
+          - generic [ref=e10]: "---"
+        - generic [ref=e11]:
+          - generic [ref=e12]: Cash
+          - generic [ref=e13]: "---"
+        - generic "Connected" [ref=e14]:
+          - generic [ref=e16]: Connected
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - heading "Watchlist" [level=2] [ref=e21]
+        - generic [ref=e23]:
+          - textbox "Add ticker..." [ref=e24]
+          - button "Add" [ref=e25]
+      - generic [ref=e26]:
+        - generic [ref=e28]: Select a ticker from the watchlist
+        - generic [ref=e29]:
+          - textbox "TICKER" [ref=e30]
+          - spinbutton [ref=e31]
+          - button "BUY" [ref=e32]
+          - button "SELL" [ref=e33]
+        - generic [ref=e34]:
+          - heading "Positions" [level=2] [ref=e36]
+          - generic [ref=e38]: No positions yet. Execute a trade to get started.
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - heading "Portfolio" [level=2] [ref=e42]
+          - generic [ref=e44]: No positions to display
+        - heading "P&L" [level=2] [ref=e47]
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - heading "AI Assistant" [level=2] [ref=e54]
+            - button "»" [ref=e55]
+          - generic [ref=e57]: Ask me about your portfolio, request trades, or get market analysis.
+          - generic [ref=e58]:
+            - textbox "Ask FinAlly..." [ref=e59]
+            - button "Send" [disabled] [ref=e60]
+  - alert [ref=e61]

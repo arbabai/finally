@@ -1,0 +1,127 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "FinAlly" [level=1] [ref=e5]
+        - generic [ref=e6]: AI Trading Workstation
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: Portfolio Value
+          - generic [ref=e10]: $9,928.86
+        - generic [ref=e11]:
+          - generic [ref=e12]: Cash
+          - generic [ref=e13]: $6,179.13
+        - generic "Connected" [ref=e14]:
+          - generic [ref=e16]: Connected
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - heading "Watchlist" [level=2] [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23] [cursor=pointer]:
+            - generic [ref=e25]: AAPL
+            - generic [ref=e26]:
+              - generic [ref=e28]: "---"
+              - button "x" [ref=e29]
+          - generic [ref=e30] [cursor=pointer]:
+            - generic [ref=e32]: AMZN
+            - generic [ref=e33]:
+              - generic [ref=e35]: "---"
+              - button "x" [ref=e36]
+          - generic [ref=e37] [cursor=pointer]:
+            - generic [ref=e39]: GOOGL
+            - generic [ref=e40]:
+              - generic [ref=e42]: "---"
+              - button "x" [ref=e43]
+          - generic [ref=e44] [cursor=pointer]:
+            - generic [ref=e46]: JPM
+            - generic [ref=e47]:
+              - generic [ref=e49]: "---"
+              - button "x" [ref=e50]
+          - generic [ref=e51] [cursor=pointer]:
+            - generic [ref=e53]: META
+            - generic [ref=e54]:
+              - generic [ref=e56]: "---"
+              - button "x" [ref=e57]
+          - generic [ref=e58] [cursor=pointer]:
+            - generic [ref=e60]: MSFT
+            - generic [ref=e61]:
+              - generic [ref=e63]: "---"
+              - button "x" [ref=e64]
+          - generic [ref=e65] [cursor=pointer]:
+            - generic [ref=e67]: NFLX
+            - generic [ref=e68]:
+              - generic [ref=e70]: "---"
+              - button "x" [ref=e71]
+          - generic [ref=e72] [cursor=pointer]:
+            - generic [ref=e74]: NVDA
+            - generic [ref=e75]:
+              - generic [ref=e77]: "---"
+              - button "x" [ref=e78]
+          - generic [ref=e79] [cursor=pointer]:
+            - generic [ref=e81]: TSLA
+            - generic [ref=e82]:
+              - generic [ref=e84]: "---"
+              - button "x" [ref=e85]
+          - generic [ref=e86] [cursor=pointer]:
+            - generic [ref=e88]: V
+            - generic [ref=e89]:
+              - generic [ref=e91]: "---"
+              - button "x" [ref=e92]
+        - generic [ref=e93]:
+          - textbox "Add ticker..." [ref=e94]
+          - button "Add" [ref=e95]
+      - generic [ref=e96]:
+        - generic [ref=e98]:
+          - generic [ref=e100]: AAPL
+          - generic [ref=e103]: Waiting for price data...
+        - generic [ref=e104]:
+          - textbox "AAPL" [ref=e105]
+          - spinbutton [ref=e106]
+          - button "BUY" [ref=e107]
+          - button "SELL" [ref=e108]
+        - generic [ref=e109]:
+          - heading "Positions" [level=2] [ref=e111]
+          - table [ref=e114]:
+            - rowgroup [ref=e115]:
+              - row "Ticker Qty Avg Cost Price P&L %" [ref=e116]:
+                - columnheader "Ticker" [ref=e117]
+                - columnheader "Qty" [ref=e118]
+                - columnheader "Avg Cost" [ref=e119]
+                - columnheader "Price" [ref=e120]
+                - columnheader "P&L" [ref=e121]
+                - columnheader "%" [ref=e122]
+            - rowgroup [ref=e123]:
+              - row "AAPL 10 $190.03 $189.97 -$0.55 -0.03%" [ref=e124]:
+                - cell "AAPL" [ref=e125]
+                - cell "10" [ref=e126]
+                - cell "$190.03" [ref=e127]
+                - cell "$189.97" [ref=e128]
+                - cell "-$0.55" [ref=e129]
+                - cell "-0.03%" [ref=e130]
+              - row "AMZN 10 $192.06 $185.00 -$70.59 -3.68%" [ref=e131]:
+                - cell "AMZN" [ref=e132]
+                - cell "10" [ref=e133]
+                - cell "$192.06" [ref=e134]
+                - cell "$185.00" [ref=e135]
+                - cell "-$70.59" [ref=e136]
+                - cell "-3.68%" [ref=e137]
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - heading "Portfolio" [level=2] [ref=e141]
+          - img [ref=e144]:
+            - generic [ref=e145]:
+              - generic [ref=e147]: AAPL
+              - generic [ref=e148]: "-0.0%"
+            - generic [ref=e149]:
+              - generic [ref=e151]: AMZN
+              - generic [ref=e152]: "-3.7%"
+        - heading "P&L" [level=2] [ref=e155]
+        - generic [ref=e160]:
+          - generic [ref=e161]:
+            - heading "AI Assistant" [level=2] [ref=e162]
+            - button "»" [ref=e163]
+          - generic [ref=e165]: Ask me about your portfolio, request trades, or get market analysis.
+          - generic [ref=e166]:
+            - textbox "Ask FinAlly..." [ref=e167]
+            - button "Send" [disabled] [ref=e168]
+  - alert [ref=e169]

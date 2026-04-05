@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/.venv/
+backend/__pycache__/
+
+# Build outputs
+frontend/out/
+frontend/.next/
+
+# Runtime data
+db/*.db
+db/*.db-journal
+db/*.db-wal
+
+# Version control
+.git/
+.gitignore
+
+# Documentation and planning
+planning/
+*.md
+LICENSE
+
+# IDE and editor files
+.vscode/
+.idea/
+.claude/
+
+# Environment files (passed via --env-file at runtime)
+.env
+
+# Tests and samples
+test/
+sample-*/
+backend/tests/
+
+# Scripts (not needed in container)
+scripts/
