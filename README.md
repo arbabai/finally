@@ -14,6 +14,7 @@ Built entirely by orchestrated AI coding agents as a capstone for an agentic AI 
 - **Portfolio heatmap** — treemap sized by position weight, colored by P&L
 - **AI chat** — ask "buy 10 shares of NVDA" and it just does it
 
+![Demo](./images/demo_image.png)
 ---
 
 ## Quick Start
